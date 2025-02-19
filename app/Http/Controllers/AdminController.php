@@ -9,9 +9,9 @@ use Illuminate\Support\Facades\Hash;
 class AdminController extends Controller
 {
     public function index()
-    {
+    {   
         $users = User::all();
-        return view('welcome', compact('users'));
+        return view('admin.adduser', compact('users'));
     }
 
     public function store(Request $request)
