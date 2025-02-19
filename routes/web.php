@@ -15,6 +15,11 @@ Route::middleware(['auth'])->group(function () {
         return view('welcome');
     })->name('welcome');
 });
+Route::middleware(['admin'])->group(function () {
+    Route::get('/admin', function () {
+        return view('admin');
+    })->name('admin');
+});
 
 
 // Route::get('/dashboard', function () {
