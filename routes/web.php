@@ -18,6 +18,11 @@ Route::middleware(['auth',])->group(function () {
         return view('welcome');
     })->name('welcome');
 });
+Route::middleware(['admin'])->group(function () {
+    Route::get('/admin', function () {
+        return view('admin');
+    })->name('admin');
+});
 
 Route::middleware(['auth','admin'])->group(function () {
     Route::get('/admin/adduser', [AdminController::class, 'index'])->name('user.store');
