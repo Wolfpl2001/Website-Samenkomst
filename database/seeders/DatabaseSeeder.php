@@ -17,5 +17,6 @@ class DatabaseSeeder extends Seeder
         $this->call(locals_dumy::class);
         $this->call(reserviring_dumy::class);
         $this->call(contract_dumy::class);
+        $this->call(login_base::class);
     }
 }
