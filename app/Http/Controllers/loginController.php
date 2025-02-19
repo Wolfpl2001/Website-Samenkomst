@@ -8,9 +8,9 @@ use App\Models\User;
 class loginController extends Controller
 {
     //
-    public function login()
+    public function login() 
     {
-        return view('login'); 
+        return view('auth.login'); 
     }
 
     public function loginPost(Request $request)
