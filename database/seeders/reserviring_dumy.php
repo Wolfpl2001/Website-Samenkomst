@@ -37,5 +37,14 @@ class reserviring_dumy extends Seeder
             'End_Date' => '2025-02-14',
             'Status' => 'Activo',
         ]);
+        // Add the fourth entry
+        DB::table('Reserviring')->insert([
+            'First_Name' => 'John',
+            'Last_name' => 'Doe',
+            'Local_id' => 4,
+            'Start_Date' => '2025-02-14',
+            'End_Date' => '2025-02-14',
+            'Status' => 'Activo',
+        ]);
     }
 }
