@@ -5,17 +5,22 @@ use App\Http\Controllers\dashboard;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\reserviring;
 
 Route::get('/', function () {
     return view('auth.login');
-});
+})->name('start');
 
 Route::get('/login', [LoginController::class, 'login'])->name('login.submit');
 Route::post('/login', [LoginController::class, 'loginPost'])->name('login.submit');
-// Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('/login', [LoginController::class, 'login'])->name('login');
+
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/welcome',[dashboard::class, 'loadDashboard'])->name('dashboard');
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+    Route::get('/reserviring', [reserviring::class, 'index'])->name('reserviring');
+
 });
 // Route::middleware(['admin'])->group(function () {
 //     Route::get('/admin', function () {
@@ -29,6 +34,7 @@ Route::middleware(['auth', 'CheckAdmin'])->group(function () {
     Route::get('/admin/{user}/edit', [AdminController::class, 'edit'])->name('user.edit');
     Route::patch('/admin/adduser/{user}', [AdminController::class, 'update'])->name('user.update');
     Route::delete('/admin/adduser/{user}', [AdminController::class, 'destroy'])->name('user.destroy');
+    Route::get('/admin/users', [AdminController::class, 'show'])->name('user.show');
 });
 
 

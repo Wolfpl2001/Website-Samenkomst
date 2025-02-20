@@ -41,4 +41,9 @@ class loginController extends Controller
             'email' => 'De ingevoerde gegevens zijn onjuist.'
         ]);
 }
+public function logout()
+{
+    Auth::logout();
+    return redirect('/');
+}
 }

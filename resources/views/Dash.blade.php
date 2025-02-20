@@ -4,30 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{asset('css/dash.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/dash.css') }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    @include('layouts.nav')
     <title>Dashboard</title>
 </head>
 <body>
-    <nav>
-        <ul>
-            @php
-                $login = 1;
-                $admin = 1;
-            @endphp
-            @if ($login == 0)
-                <li><a href="">Login</a></li>
-            @endif
-            @if ($login == 1)
-                <li><a href="">Logout</a></li>
-            @endif
-            <li><a href="">Kameroverzicht</a></li>
-            <li><a href="">Reserviring</a></li>
-            @if($admin == 1)
-                <li><a href="">Beheren</a></li>
-            @endif
-        </ul>
-        <input type="text" name="" id=""placeholder="Zoeken">
-    </nav>
+
 
     <div>
         <h1>Reserveringen</h1>
@@ -39,16 +22,15 @@
                 <th>Vanaf</th>
                 <th>T/m</th>
             </tr>
-        @foreach ($data as $data)
-        <tr>
-            <td>{{$data->first_name}}</td>
-            <td>{{$data->last_name}}</td>
-            <td>{{$data->local_id}}</td>
-            <td>{{$data->Start_Date}}</td>
-            <td>{{$data->End_Date}}</td>
-        </tr>
-        @endforeach
-
+            @foreach ($data as $reservation)
+            <tr>
+                <td>{{ $reservation->first_name }}</td>
+                <td>{{ $reservation->last_name }}</td>
+                <td>{{ $reservation->local_id }}</td>
+                <td>{{ $reservation->Start_Date }}</td>
+                <td>{{ $reservation->End_Date }}</td>
+            </tr>
+            @endforeach
         </table>
     </div>
 </body>

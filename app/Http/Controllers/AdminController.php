@@ -69,4 +69,9 @@ class AdminController extends Controller
         $user->delete();
         return redirect()->route('admin.adduser')->with('success', 'Gebruiker is verwijderd.');
     }
+    public function show()
+    {
+        $users = User::all();
+        return view('admin.users', compact('users'));
+    }
 }

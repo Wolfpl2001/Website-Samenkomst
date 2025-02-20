@@ -16,7 +16,7 @@ class CheckAdmin
         if (Auth::check() && Auth::user()->role === 'admin') {
             return $next($request);
         }
-        return redirect('/login')->withErrors('Je hebt geen toegang tot deze pagina.');
+        return redirect()->route('named_route')->withErrors('Je hebt geen toegang tot deze pagina.');
     }
 }
 
