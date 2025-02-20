@@ -7,6 +7,7 @@ export default defineConfig({
             input: [
                 "resources/css/app.css",
                 "resources/css/style.css",
+                "resources/css/adduser.css",
                 "resources/js/app.js",
                 "resources/css/dash.css",
             ],

@@ -9,29 +9,36 @@ use Illuminate\Support\Facades\Hash;
 class AdminController extends Controller
 {
     public function index()
-    {   
+    {
+       
         $users = User::all();
         return view('admin.adduser', compact('users'));
     }
 
     public function store(Request $request)
     {
-        $request->validate([
+        $validatedData = $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|unique:users',
+            'email' => 'required|string|email|unique:users|regex:/^[a-zA-Z0-9._%+-]+@gmail\.com$/',
             'password' => 'required|string|min:8|confirmed',
-            'role' => 'required|boolean',
+            'role' => 'required|in:admin,gebruiker',
+        ],[
+            'password.min' => 'Het wachtwoord moet minimaal 8 tekens bevatten.', 
         ]);
 
-        User::create([
-            'name' => $request->input('name'),
-            'email' => $request->input('email'),
-            'password' => Hash::make($request->input('password')),
-            'role' => $request->input('role'),
-        ]);
-
-        return redirect()->route('user.store')->with('success', 'Gebruiker is aangemaakt.');
+        try {
+            User::create([
+                'name' => $request->input('name'),
+                'email' => $request->input('email'),
+                'password' => Hash::make($request->input('password')),
+                'role' => $request->input('role'),
+            ]);
+            return redirect()->route('admin.adduser')->with('success', 'Gebruiker is aangemaakt.');
+        } catch (\Exception $e) {
+            return redirect()->route('admin.adduser')->with('error', 'Er is een fout opgetreden: ' . $e->getMessage());
+        }
     }
+
 
     public function edit(User $user)
     {
@@ -44,7 +51,7 @@ class AdminController extends Controller
             'name' => 'required|string|max:50',
             'email' => 'required|string|email|unique:users,email,' . $user->id,
             'password' => 'nullable|string|min:8|confirmed',
-            'role' => 'required|boolean',
+            'role' =>'required|in:admin,gebruiker',
         ]);
 
         $user->update([
@@ -54,12 +61,12 @@ class AdminController extends Controller
             'password' => $request->filled('password') ? Hash::make($request->input('password')) : $user->password,
         ]);
 
-        return redirect()->route('user.store')->with('success', 'Gebruiker is aangepast.');
+        return redirect()->route('admin.adduser')->with('success', 'Gebruiker is aangepast.');
     }
 
     public function destroy(User $user)
     {
         $user->delete();
-        return redirect()->route('user.store')->with('success', 'Gebruiker is verwijderd.');
+        return redirect()->route('admin.adduser')->with('success', 'Gebruiker is verwijderd.');
     }
 }

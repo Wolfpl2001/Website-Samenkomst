@@ -24,12 +24,13 @@ Route::middleware(['auth'])->group(function () {
 // });
 
 Route::middleware(['auth', 'CheckAdmin'])->group(function () {
-    Route::get('/admin/adduser', [AdminController::class, 'index'])->name('user.store');
-    Route::post('/admin/users', [AdminController::class, 'store'])->name('users.store');
-    Route::get('/admin/{user}/edit', [AdminController::class, 'edit'])->name('users.edit');
-    Route::patch('/admin/users/{user}', [AdminController::class, 'update'])->name('users.update');
-    Route::delete('/admin/users/{user}', [AdminController::class, 'destroy'])->name('users.destroy');
+    Route::get('/admin/adduser', [AdminController::class, 'index'])->name('admin.adduser');
+    Route::post('/admin/adduser', [AdminController::class, 'store'])->name('user.store'); // ✅ Staat deze erin?
+    Route::get('/admin/{user}/edit', [AdminController::class, 'edit'])->name('user.edit');
+    Route::patch('/admin/adduser/{user}', [AdminController::class, 'update'])->name('user.update');
+    Route::delete('/admin/adduser/{user}', [AdminController::class, 'destroy'])->name('user.destroy');
 });
+
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
