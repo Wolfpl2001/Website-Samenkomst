@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{asset('css/dash.css')}}">
     <title>Dashboard</title>
 </head>
 <body>
@@ -34,20 +35,17 @@
             <tr>
                 <th>Vornaam</th>
                 <th>Achternaam</th>
-                <th>Kamer</th>
+                <th>Kamer nr</th>
                 <th>Vanaf</th>
                 <th>T/m</th>
             </tr>
-        @php
-            $data = [1,2.3,4,5,6,7,8,9,10];
-        @endphp
         @foreach ($data as $data)
         <tr>
-            <td>data</td>
-            <td>data</td>
-            <td>data</td>
-            <td>data</td>
-            <td>data</td>
+            <td>{{$data->first_name}}</td>
+            <td>{{$data->last_name}}</td>
+            <td>{{$data->local_id}}</td>
+            <td>{{$data->Start_Date}}</td>
+            <td>{{$data->End_Date}}</td>
         </tr>
         @endforeach
 

@@ -43,6 +43,5 @@ protected $middlewareGroups = [
 */
 protected $routeMiddleware = [
 // andere middleware
-'admin' => \App\Http\Middleware\Admin::class, // Hier voeg je je middleware toe
 ];
 }

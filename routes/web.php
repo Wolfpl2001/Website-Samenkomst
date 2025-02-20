@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\LoginController;
+use App\Http\Middleware\Admin;
+use App\Http\Controllers\dashboard;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
-use App\Http\Middleware\Admin;
+use App\Http\Controllers\LoginController;
 
 Route::get('/', function () {
     return view('auth.login');
@@ -14,9 +15,7 @@ Route::post('/login', [LoginController::class, 'loginPost'])->name('login.submit
 // Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/welcome', function () {
-        return view('welcome');
-    })->name('welcome');
+    Route::get('/welcome',[dashboard::class, 'loadDashboard'])->name('dashboard');
 });
 // Route::middleware(['admin'])->group(function () {
 //     Route::get('/admin', function () {

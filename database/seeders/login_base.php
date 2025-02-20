@@ -16,7 +16,8 @@ class login_base extends Seeder
         DB::table('users')->insert([
             'name' => 'admin',
             'email' => 'admin@smk.com',
-            'password' => Hash::make('admin')
+            'password' => Hash::make('admin'),
+            'role' => 'admin'
         ]); 
     }
 }
