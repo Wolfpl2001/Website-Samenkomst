@@ -1,4 +1,4 @@
-@extend('layouts.auth')
+@extends('layouts.auth')
 @section('title', "Gebruiker bewerken")
 @section('content')
 <div class="Add user">
@@ -8,9 +8,10 @@
         {{ session('succes') }}
     </div>
     @endif
-    <form action="{{route('edit.user', $user->id)}}" method="POST">
+    <form action="{{ route('user.update', $user->id) }}" method="POST">
+
         @csrf
-        @method('PATH')
+        @method('PATCH')
         <div>
             <label for="name">Naam:</label>
             <input type="text" id="name" name="name" value="{{$user->name}}" required>
@@ -30,8 +31,9 @@
         <div>
             <label for="role">Rol:</label>
             <select id="role" name="role" required>
-                <option value="0" {{!user->role ? 'selected' : ''}}>Gebruiker</option>
-                <option value="1" {{!user->role ? 'selected' : ''}}>Admin</option>
+                <option value="gebruiker" {{ $user->role != 'admin' ? 'selected' : '' }}>Gebruiker</option>
+                <option value="admin" {{ $user->role == 'admin' ? 'selected' : '' }}>Admin</option>
+
             </select>
         </div>
         <button type="submit">Bijwerken</button>
