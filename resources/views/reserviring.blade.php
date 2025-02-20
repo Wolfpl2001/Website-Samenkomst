@@ -1,5 +1,6 @@
 <div>
-    <form method="POST">
+{{--    moet nog defined worden in routes--}}
+    <form action="{{route('reserviring.store')}}">
         <label for="fname">Voornaam</label>
         <input type="text" id="fname" name="fname"><br>
         <label for="lname">Achternaam</label>
