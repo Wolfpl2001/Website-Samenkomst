@@ -13,11 +13,10 @@ class reserviring extends Controller
         return view('reserviring')->with('data', $reservirings);
     }
 
-    public function create()
+    public function create(Request $request)
     {
 
     }
-
     public function store()
     {
 
