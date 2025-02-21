@@ -25,7 +25,6 @@ class AdminController extends Controller
         ],[
             'password.min' => 'Het wachtwoord moet minimaal 8 tekens bevatten.', 
         ]);
-
         try {
             User::create([
                 'name' => $request->input('name'),
