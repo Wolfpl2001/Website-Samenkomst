@@ -20,6 +20,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/welcome',[dashboard::class, 'loadDashboard'])->name('dashboard');
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
     Route::get('/reserviring', [reserviring::class, 'index'])->name('reserviring');
+    //moet nog aangewerkt worden
+    Route::get('/reserviring/add', [reserviring::class,"index"])->name("placeholding");
+    Route::post('/reserviring/add', [reserviring::class,"store"])->name("placeholding");
+
+
+    // CRUD
+
 
 });
 // Route::middleware(['admin'])->group(function () {
