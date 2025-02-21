@@ -23,4 +23,8 @@ class reserviring extends Controller
 
 
     }
+
+    public function update(){
+
+    }
 }
