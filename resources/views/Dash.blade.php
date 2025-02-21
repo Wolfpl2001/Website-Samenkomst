@@ -11,27 +11,51 @@
 </head>
 <body>
 
-
-    <div>
-        <h1>Reserveringen</h1>
-        <table>
-            <tr>
-                <th>Vornaam</th>
-                <th>Achternaam</th>
-                <th>Kamer nr</th>
-                <th>Vanaf</th>
-                <th>T/m</th>
-            </tr>
-            @foreach ($data as $reservation)
-            <tr>
-                <td>{{ $reservation->first_name }}</td>
-                <td>{{ $reservation->last_name }}</td>
-                <td>{{ $reservation->local_id }}</td>
-                <td>{{ $reservation->Start_Date }}</td>
-                <td>{{ $reservation->End_Date }}</td>
-            </tr>
-            @endforeach
-        </table>
-    </div>
+<table>
+    <tr>
+        <td>
+            <h1>Reserveringen</h1>
+            <table>
+                <tr>
+                    <th>Vornaam</th>
+                    <th>Achternaam</th>
+                    <th>Kamer nr</th>
+                    <th>Vanaf</th>
+                    <th>T/m</th>
+                </tr>
+                @foreach ($data as $reservation)
+                <tr>
+                    <td>{{ $reservation->first_name }}</td>
+                    <td>{{ $reservation->last_name }}</td>
+                    <td>{{ $reservation->local_id }}</td>
+                    <td>{{ $reservation->Start_Date }}</td>
+                    <td>{{ $reservation->End_Date }}</td>
+                </tr>
+                @endforeach
+            </table>
+        </td>
+        <td>
+            <h1>Contracten</h1>
+            <table>
+                <tr>
+                    <th>Contract ID</th>
+                    <th>Contract Type</th>
+                    <th>Contract Duur</th>
+                    <th>Contract Start</th>
+                    <th>Contract Eind</th>
+                </tr>
+                @foreach ($contract as $contract)
+                <tr>
+                    <td>{{ $contract->id }}</td>
+                    <td>{{ $contract->Company_Name }}</td>
+                    <td>{{ $contract->Reserviring_id }}</td>
+                    <td>{{ $contract->Start_Date }}</td>
+                    <td>{{ $contract->End_Date }}</td>
+                </tr>
+                @endforeach
+                </table>
+            </td>
+        </tr>
+    </table>
 </body>
 </html>
