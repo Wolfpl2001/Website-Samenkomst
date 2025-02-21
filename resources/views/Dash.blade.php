@@ -10,6 +10,17 @@
     <title>Dashboard</title>
 </head>
 <body>
+    @if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+
+@if (session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
 
 <table>
     <tr>
@@ -43,6 +54,7 @@
                     <th>Contract Duur</th>
                     <th>Contract Start</th>
                     <th>Contract Eind</th>
+                    <th>Acties</th>
                 </tr>
                 @foreach ($contract as $contract)
                 <tr>
@@ -51,6 +63,13 @@
                     <td>{{ $contract->Reserviring_id }}</td>
                     <td>{{ $contract->Start_Date }}</td>
                     <td>{{ $contract->End_Date }}</td>
+                    <td>
+                        <form action="{{route('contract.verlengt')}}" method="post">
+                            @csrf
+                            <input type="hidden" name="id" value="{{ $contract->id }}">
+                            <input type="submit" value="Verlengen">
+                        </form>
+                    </td>
                 </tr>
                 @endforeach
                 </table>

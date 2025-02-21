@@ -23,6 +23,7 @@ Route::middleware(['auth'])->group(function () {
     //moet nog aangewerkt worden
     Route::get('/reserviring/add', [reserviring::class,"index"])->name("placeholding");
     Route::post('/reserviring/add', [reserviring::class,"store"])->name("placeholding");
+    Route::post('/dashboard/verlengt/contract', [dashboard::class, 'verlengtContract'])->name('contract.verlengt');
 
 
     // CRUD
