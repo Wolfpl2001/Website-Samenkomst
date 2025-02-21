@@ -12,4 +12,15 @@ class reserviring extends Controller
         $reservirings = DB::table('reserviring')->get();
         return view('reserviring')->with('data', $reservirings);
     }
+
+    public function create()
+    {
+
+    }
+
+    public function store()
+    {
+
+
+    }
 }
