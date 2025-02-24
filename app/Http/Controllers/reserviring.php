@@ -48,15 +48,38 @@ class reserviring extends Controller
 
     }
 
-    public function edit($id)
+    public function edit(Request $request)
     {
-        $reservirings = DB::table('reserviring')->where('id', $id)->first();
-        return view('reserviring.edit', (['reservation' => $reservirings]));
+        $validatedData = $request->validate([
+            'First_Name' => 'required|string|max:255',
+            'Last_Name' => 'required|string',
+            'Start_Date' => 'required|date',
+            'End_Date' => 'required|date',
+            "status" => 'required|string'
+        ]);
+
+        try {
+            $reserviring = DB::table("reserviring")->find($request->id);
+            $reserviring->first_Name = $request->input('First_Name');
+            $reserviring->Last_Name = $request->input('Last_Name');
+            $reserviring->Start_Date = $request->input('Start_Date');
+            $reserviring->End_Date = $request->input('End_Date');
+            $reserviring->status = $request->input('status');
+            $reserviring->local_id = $request->input('local_id');
+            $reserviring->save();
+
+            return redirect()->route('reserviring')->with('success', 'Reservatie is aangemaakt.');
+        } catch (\Exception $e) {
+            return redirect()->route('reserviring.update')->with('error', 'Er is een fout opgetreden: ' . $e->getMessage());
+        }
     }
 
     public function update(Request $request)
     {
-        return view('reserviring.edit');
+        $kamers = DB::table('locals')->where("status", "active")->get();
+        $reservirings = DB::table('reserviring')->where('id', $request->id)->first();
+        return view('reserviring.edit',(['reservation' => $reservirings,"locals" => $kamers]));
+
     }
 
     public function destroy($id)
