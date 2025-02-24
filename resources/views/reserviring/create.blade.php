@@ -21,7 +21,14 @@
         <label for="enddate"> Eind Datum:</label>
         <input type="date" id="End_Date" name="End_Date"><br>
 
+        <label for="Kamer"> Kamer </label>
+        <select name ="local_id" id="local_id">
+            @foreach ($locals as $kamer)
+                <option value ="{{$kamer->id}}">{{$kamer->num}} - {{$kamer->type}} </option>
+            @endforeach
+        </select>
         <label for="statusCheck"> Status </label>
+
         <select name="status" id="Status">
             <option value="active">Actief</option>
             <option value="inactive">Inactief</option>

@@ -11,12 +11,13 @@ class reserviring extends Controller
     public function index()
     {
         $reservirings = DB::table('reserviring')->get();
-        return view('reserviring')->with('data', $reservirings);
+        return view('reserviring'(['data'=> $reservirings]));
     }
 
     public function create()
     {
-        return view("reserviring.create");
+        $kamers = DB::table('locals')->where("status", "active")->get();
+        return view("reserviring.create",(["locals"=> $kamers]));
     }
     public function store(Request $request)
     {
@@ -30,12 +31,14 @@ class reserviring extends Controller
         ]);
 
         try {
+
             DB::table("reserviring")->insert([
                 'first_Name' => $request->input('First_Name'),
                 'last_Name' => $request->input('Last_Name'),
                 'start_Date' => $request->input('Start_Date'),
                 'End_Date' => $request->input('End_Date'),
                 'Status' => $request->input('status'),
+                "local_id" => $request->input('local_id')
             ]);
             return redirect()->route('reserviring.create')->with('success', 'Gebruiker is aangemaakt.');
         } catch (\Exception $e) {
