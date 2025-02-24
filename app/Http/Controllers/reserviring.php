@@ -17,7 +17,7 @@ class reserviring extends Controller
     public function create()
     {
         $kamers = DB::table('locals')->where("status", "active")->get();
-        return view("reserviring.create", (["locals" => $kamers]));
+        return view("reserviring.create", (["locals" => $kamers]))  ;
     }
 
     public function store(Request $request)
