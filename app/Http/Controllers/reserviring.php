@@ -17,8 +17,9 @@ class reserviring extends Controller
     {
         return view("reserviring.create");
     }
-    public function store(request $request)
+    public function store(Request $request)
     {
+
         $validatedData = $request->validate([
             'First_Name' => 'required|string|max:255',
             'Last_Name' => 'required|string',
@@ -45,6 +46,6 @@ class reserviring extends Controller
     }
 
     public function update(){
-        return view('reserviring.edit', compact('d'));
+        return view('reserviring.edit', compact('placeholder'));
     }
 }

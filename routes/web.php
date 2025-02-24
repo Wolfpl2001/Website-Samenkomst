@@ -23,8 +23,8 @@ Route::middleware(['auth'])->group(function () {
     //moet nog aangewerkt worden
     Route::get('/reserviring/add', [reserviring::class,"create"])->name("reserviring.create");
     Route::post('/reserviring/add', [reserviring::class,"store"])->name("reserviring.store");
-    Route::get('/reserviring/edit', [reserviring::class,"edit"])->name("reserviring.edit");
-    Route::patch('/reserviring/edit/', [reserviring::class,"update"])->name("reserviring.update");
+    Route::get('/reserviring/edit/{id}', [reserviring::class,"edit"])->name("reserviring.edit");
+    Route::patch('/reserviring/edit/{id}', [reserviring::class,"update"])->name("reserviring.update");
 
 
 
