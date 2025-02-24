@@ -11,7 +11,6 @@
 <body>
     <div class="container mt-5">
         <h2 class="mb-4">Reserveringen</h2>
-        <a href="{{ route('admin.adduser') }}" class="btn btn-success">Add New User</a>
         <a href="{{ route('reserviring.create') }}" class="btn btn-success">Add New Reservation</a>
 
         <table class="table table-bordered">
