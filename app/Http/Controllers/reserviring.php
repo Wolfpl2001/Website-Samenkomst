@@ -17,7 +17,7 @@ class reserviring extends Controller
     public function create()
     {
         $kamers = DB::table('locals')->where("status", "active")->get();
-        return view("reserviring.create", (["locals" => $kamers]))  ;
+        return view("reserviring.create", (["locals" => $kamers]));
     }
 
     public function store(Request $request)
@@ -59,15 +59,16 @@ class reserviring extends Controller
         ]);
 
         try {
-            $reserviring = DB::table("reserviring")->find($request->id);
-            $reserviring->first_Name = $request->input('First_Name');
-            $reserviring->Last_Name = $request->input('Last_Name');
-            $reserviring->Start_Date = $request->input('Start_Date');
-            $reserviring->End_Date = $request->input('End_Date');
-            $reserviring->status = $request->input('status');
-            $reserviring->local_id = $request->input('local_id');
-            $reserviring->save();
-
+            DB::table("reserviring")
+                ->where('id', $request->input('id'))
+                ->update([
+                'first_Name' => $request->input('First_Name'),
+                'last_Name' => $request->input('Last_Name'),
+                'start_Date' => $request->input('Start_Date'),
+                'End_Date' => $request->input('End_Date'),
+                'Status' => $request->input('status'),
+                "local_id" => $request->input('local_id')
+            ]);
             return redirect()->route('reserviring')->with('success', 'Reservatie is aangemaakt.');
         } catch (\Exception $e) {
             return redirect()->route('reserviring.update')->with('error', 'Er is een fout opgetreden: ' . $e->getMessage());
