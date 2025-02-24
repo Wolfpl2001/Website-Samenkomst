@@ -1,6 +1,5 @@
     <form action="{{route('reserviring.store')}}" method="POST">
         @csrf
-        @method
         <label for="firstname">Voornaam</label>
         <input type="text" id="First_Name" name="First_Name"><br>
         <label for="lastname">Achternaam</label>

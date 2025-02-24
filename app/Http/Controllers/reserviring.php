@@ -23,7 +23,7 @@ class reserviring extends Controller
             'First_Name' => 'required|string|max:255',
             'Last_Name' => 'required|string',
             'Start_Date' => 'required|date',
-            'End_Date' => 'required|',
+            'End_Date' => 'required|date',
         ]);
 
         try {
@@ -40,7 +40,11 @@ class reserviring extends Controller
 
     }
 
-    public function update(){
+    public function edit(){
+        return view('reserviring.edit');
+    }
 
+    public function update(){
+        return view('reserviring.edit', compact('d'));
     }
 }
