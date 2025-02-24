@@ -16,7 +16,7 @@ class reserviring extends Controller
 
     public function create()
     {
-        $kamers = DB::table('locals')->where("status", "active")->get();
+        $kamers = DB::table('locals')->where("status", "Beschikbaar")->get();
         return view("reserviring.create", (["locals" => $kamers]));
     }
 
@@ -77,7 +77,7 @@ class reserviring extends Controller
 
     public function update(Request $request)
     {
-        $kamers = DB::table('locals')->where("status", "active")->get();
+        $kamers = DB::table('locals')->get();
         $reservirings = DB::table('reserviring')->where('id', $request->id)->first();
         return view('reserviring.edit',(['reservation' => $reservirings,"locals" => $kamers]));
 

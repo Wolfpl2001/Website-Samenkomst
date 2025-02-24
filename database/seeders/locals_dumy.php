@@ -19,7 +19,7 @@ class locals_dumy extends Seeder
             'Max_People' => 10,
             'Table' => 'U',
             'Screen' => 'Proyector',
-            'Status' => 'Disponible',
+            'Status' => 'Beschikbaar',
         ]);
         DB::table('Locals')->insert([
             'Num' => 2,
@@ -27,7 +27,7 @@ class locals_dumy extends Seeder
             'Max_People' => 10,
             'Table' => 'T',
             'Screen' => 'Proyector',
-            'Status' => 'Disponible',
+            'Status' => 'Beschikbaar',
         ]);
         DB::table('Locals')->insert([
             'Num' => 3,
@@ -35,7 +35,7 @@ class locals_dumy extends Seeder
             'Max_People' => 10,
             'Table' => 'Y',
             'Screen' => 'Proyector',
-            'Status' => 'Disponible',
+            'Status' => 'Beschikbaar',
         ]);
         DB::table('Locals')->insert([
             'Num' => 4,
@@ -43,7 +43,7 @@ class locals_dumy extends Seeder
             'Max_People' => 10,
             'Table' => 'Z',
             'Screen' => 'Proyector',
-            'Status' => 'Disponible',
+            'Status' => 'Beschikbaar',
         ]);
         
     }
