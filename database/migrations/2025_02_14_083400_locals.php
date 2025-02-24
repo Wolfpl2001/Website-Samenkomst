@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('Locals', function (Blueprint $table) {
+        Schema::create('locals', function (Blueprint $table) {
                 $table->id();
                 $table->integer('num')->unique(); 
                 $table->string('type', 20);
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('Locals');
+        Schema::dropIfExists('locals');
     }
 };
