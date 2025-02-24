@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="{{ asset('css/nav.css') }}">
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <nav>
     <ul>
         @if (!Auth::check())

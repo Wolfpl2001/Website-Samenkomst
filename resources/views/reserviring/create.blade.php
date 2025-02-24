@@ -20,7 +20,11 @@
         <input type="date" id="Start_Date" name="Start_Date"><br>
         <label for="enddate"> Eind Datum:</label>
         <input type="date" id="End_Date" name="End_Date"><br>
-
+<select name="" id="">
+        @foreach ($reserviring as $reserviring)
+            <option value="{{$reserviring->id}}">{{$reserviring->local_id}} {{$reserviring->Name}}</option>
+        @endforeach
+    </select>
         <label for="statusCheck"> Status </label>
         <select name="status" id="Status">
             <option value="active">Actief</option>
