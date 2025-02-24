@@ -54,12 +54,12 @@ class reserviring extends Controller
         return view('reserviring.edit', (['reservation' => $reservirings]));
     }
 
-    public function update()
+    public function update(Request $request)
     {
-        return view('reserviring.edit', (['reservation' => $reservirings]));
+        return view('reserviring.edit');
     }
 
-    public function destroy()
+    public function destroy($id)
     {
         try {
             DB::table('reserviring')->where('id', $id)->delete();

@@ -25,7 +25,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/reserviring/add', [reserviring::class,"create"])->name("reserviring.create");
     Route::post('/reserviring/add', [reserviring::class,"store"])->name("reserviring.store");
     Route::get('/reserviring/edit/{id}', [reserviring::class,"edit"])->name("reserviring.edit");
-    Route::patch('/reserviring/edit/{id}', [reserviring::class,"update"])->name("reserviring.update");
+    Route::get('/reserviring/update', [reserviring::class, 'update'])->name('reserviring.update');
+    Route::post('/reserviring/delete/{id}', [reserviring::class,"destroy"])->name("reserviring.destroy");
     Route::post('/dashboard/verlengt/contract', [dashboard::class, 'verlengtContract'])->name('contract.verlengt');
     //kamers
     Route::get('/kamers', [KamersController::class, 'index'])->name('kamers.index');
