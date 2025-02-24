@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+
 class reserviring extends Controller
 {
     public function index()
@@ -25,14 +26,16 @@ class reserviring extends Controller
             'Last_Name' => 'required|string',
             'Start_Date' => 'required|date',
             'End_Date' => 'required|date',
+            "status" => 'required|string'
         ]);
 
         try {
-            reserviring::create([
-                'First_Name' => $request->input('First_Name'),
-                'Last_Name' => $request->input('Last_Name'),
-                'Start_Date' => $request->input('Start_Date'),
+            DB::table("reserviring")->insert([
+                'first_Name' => $request->input('First_Name'),
+                'last_Name' => $request->input('Last_Name'),
+                'start_Date' => $request->input('Start_Date'),
                 'End_Date' => $request->input('End_Date'),
+                'Status' => $request->input('status'),
             ]);
             return redirect()->route('reserviring.create')->with('success', 'Gebruiker is aangemaakt.');
         } catch (\Exception $e) {
