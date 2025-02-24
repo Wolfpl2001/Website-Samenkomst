@@ -12,6 +12,8 @@
     <div class="container mt-5">
         <h2 class="mb-4">Reserveringen</h2>
         <a href="{{ route('admin.adduser') }}" class="btn btn-success">Add New User</a>
+        <a href="{{ route('reserviring.create') }}" class="btn btn-success">Add New Reservation</a>
+
         <table class="table table-bordered">
             <tr>
                 <th>Vornaam</th>
@@ -28,8 +30,8 @@
                 <td>{{ $reservation->Start_Date }}</td>
                 <td>{{ $reservation->End_Date }}</td>
                 <td>
-                    <a href="{{ route('user.edit', $reservation->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                    <form action="{{ route('user.destroy', $reservation->id) }}" method="POST" style="display:inline-block;">
+                    <a href="{{ route('reserviring.edit', $reservation->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                    <form action="{{ route('reserviring.destroy', $reservation->id) }}" method="POST" style="display:inline-block;">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger btn-sm">Delete</button>

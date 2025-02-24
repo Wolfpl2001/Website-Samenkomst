@@ -1,6 +1,6 @@
 <form action="{{route('reserviring.update')}}" method="POST">
     <label for="firstname">Voornaam</label>
-    <input type="text" id="First_Name" name="First_Name" value="{{$reservation->First_name}}"><br>
+    <input type="text" id="First_Name" name="First_Name" value="{{$reservation->first_name}}"><br>
     <label for="lname">Achternaam</label>php
     <input type="text" id="Last_Name" name="Last_Name" value="{{$reservation->Last_name}}"><br>
 

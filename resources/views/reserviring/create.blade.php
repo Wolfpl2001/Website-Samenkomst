@@ -1,3 +1,4 @@
+
 @if($errors->any())
     <div class="alert alert-danger">
         <ul>
@@ -8,6 +9,11 @@
     </div>
 @endif
 @extends('layouts.auth')
+@if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
 
     <form action="{{route('reserviring.store')}}" method="POST">
         @csrf
