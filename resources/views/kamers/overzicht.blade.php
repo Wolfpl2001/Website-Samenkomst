@@ -28,7 +28,9 @@
         @endif
 
         <h2 class="mb-4"> Kameroverzicht</h2>
+        @if(auth()->check() && auth()->user()->is_admin)
         <a href="{{ route('kamers.create') }}" class="btn btn-success">Add New Room</a>
+        @endif
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -50,6 +52,7 @@
                     <td>{{ $kamer->screen }}</td>
                     <td>{{ $kamer->status }}</td>
                     <td>
+                        @if(auth()->check() && auth()->user()->is_admin)
                         <a href="{{ route('kamers.edit', $kamer->id) }}" class="btn btn-warning btn-sm">Edit</a>
                         <form action="{{ route('kamers.destroy', $kamer->id) }}" method="POST"
                             style="display:inline-block;">
@@ -58,6 +61,7 @@
                             <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                         </form>
                     </td>
+                    @endif
                 </tr>
                 @endforeach
             </tbody>

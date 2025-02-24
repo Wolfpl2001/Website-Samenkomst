@@ -27,17 +27,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/reserviring/edit/{id}', [reserviring::class,"edit"])->name("reserviring.edit");
     Route::patch('/reserviring/edit/{id}', [reserviring::class,"update"])->name("reserviring.update");
     Route::post('/dashboard/verlengt/contract', [dashboard::class, 'verlengtContract'])->name('contract.verlengt');
-
-
+    //kamers
+    Route::get('/kamers', [KamersController::class, 'index'])->name('kamers.index');
     // CRUD
 
 
 });
-// Route::middleware(['admin'])->group(function () {
-//     Route::get('/admin', function () {
-//         return view('admin');
-//     })->name('admin');
-// });
+
 
 Route::middleware(['auth', 'CheckAdmin'])->group(function () {
     Route::get('/admin/adduser', [AdminController::class, 'index'])->name('admin.adduser');
@@ -48,12 +44,13 @@ Route::middleware(['auth', 'CheckAdmin'])->group(function () {
     Route::get('/admin/users', [AdminController::class, 'show'])->name('user.show');
 
     // Kamers Routes
-    Route::get('/kamers', [KamersController::class, 'index'])->name('kamers.index');
+    
     Route::get('/kamers/create', [KamersController::class, 'create'])->name('kamers.create');
     Route::post('/kamers', [KamersController::class, 'store'])->name('kamers.store');
     Route::get('/kamers/{id}/edit', [KamersController::class, 'edit'])->name('kamers.edit');
-    Route::put('/kamers/{id}/edit', [KamersController::class, 'update'])->name('kamers.update');
     Route::delete('/kamers/{id}/overzicht', [KamersController::class, 'destroy'])->name('kamers.destroy');
+    Route::put('/kamers/{id}/edit', [KamersController::class, 'update'])->name('kamers.update');
+   
 });
 
 
