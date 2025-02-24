@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\reserviring;
+use App\Http\Controllers\KamersController;
 
 Route::get('/', function () {
     return view('auth.login');
@@ -25,9 +26,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/reserviring/add', [reserviring::class,"store"])->name("reserviring.store");
     Route::get('/reserviring/edit/{id}', [reserviring::class,"edit"])->name("reserviring.edit");
     Route::patch('/reserviring/edit/{id}', [reserviring::class,"update"])->name("reserviring.update");
-
-
-
     Route::post('/dashboard/verlengt/contract', [dashboard::class, 'verlengtContract'])->name('contract.verlengt');
 
 
@@ -43,12 +41,21 @@ Route::middleware(['auth'])->group(function () {
 
 Route::middleware(['auth', 'CheckAdmin'])->group(function () {
     Route::get('/admin/adduser', [AdminController::class, 'index'])->name('admin.adduser');
-    Route::post('/admin/adduser', [AdminController::class, 'store'])->name('user.store'); // ✅ Staat deze erin?
+    Route::post('/admin/adduser', [AdminController::class, 'store'])->name('user.store');
     Route::get('/admin/{user}/edit', [AdminController::class, 'edit'])->name('user.edit');
     Route::patch('/admin/adduser/{user}', [AdminController::class, 'update'])->name('user.update');
     Route::delete('/admin/adduser/{user}', [AdminController::class, 'destroy'])->name('user.destroy');
     Route::get('/admin/users', [AdminController::class, 'show'])->name('user.show');
+
+    // Kamers Routes
+    Route::get('/kamers', [KamersController::class, 'index'])->name('kamers.index');
+    Route::get('/kamers/create', [KamersController::class, 'create'])->name('kamers.create');
+    Route::post('/kamers', [KamersController::class, 'store'])->name('kamers.store');
+    Route::get('/kamers/{id}/edit', [KamersController::class, 'edit'])->name('kamers.edit');
+    Route::put('/kamers/{id}/edit', [KamersController::class, 'update'])->name('kamers.update');
+    Route::delete('/kamers/{id}/overzicht', [KamersController::class, 'destroy'])->name('kamers.destroy');
 });
+
 
 
 // Route::get('/dashboard', function () {
